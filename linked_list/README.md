@@ -1,1 +1,2 @@
-# linked list
+# Linked List
+### a singly linked list
