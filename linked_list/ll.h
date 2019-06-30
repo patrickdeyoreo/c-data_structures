@@ -5,7 +5,6 @@
 
 #include "ll_node.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 
 // Linked list structure
@@ -16,7 +15,7 @@ typedef struct ll {
 
 
 // Create an empty list
-ll_t *ll_new(ll_node_t *head, size_t size);
+ll_t *ll_new(void);
 
 // Create a copy of a list
 ll_t *ll_copy(ll_t *src);
@@ -67,4 +66,4 @@ void ll_print(ll_t *list);
 void _ll_print(ll_node_t *head);
 
 
-#endif
+#endif /* LL_H */

@@ -4,11 +4,11 @@
 
 
 // Create an empty list
-ll_t *ll_new(ll_node_t *head, size_t size)
+ll_t *ll_new(void)
 {
         ll_t *new_ll = (ll_t *) malloc(sizeof(ll_t));
-        new_ll->head = head;
-        new_ll->size = size;
+        new_ll->head = NULL;
+        new_ll->size = 0;
         return new_ll;
 }
 
@@ -70,7 +70,9 @@ void _ll_extend(ll_node_t **head, ll_node_t *to_append)
 // Insert an item at a given position
 int ll_insert(ll_t *list, int index, int to_insert)
 {
-        if (!list || index < 0 || index >= list->size)
+	if (index < 0)
+		index += list->size + 1;
+        if (!list || index < 0 || (unsigned int) index > list->size)
                 return -1;
 
         _ll_insert(&list->head, index, to_insert);
@@ -82,7 +84,7 @@ void _ll_insert(ll_node_t **head, int index, int to_insert)
         if (index)
                 _ll_insert(&(*head)->next, --index, to_insert);
         else
-                *head = ll_node_new(to_insert, (*head)->next);
+                *head = ll_node_new(to_insert, *head);
         return;
 }
 
@@ -123,11 +125,14 @@ int _ll_remove(ll_node_t **head, int to_remove)
 // Remove and return the item at a given position
 int ll_pop(ll_t *list, int index)
 {
-        int popped = 0;
-        if (!list || index < 0 || index >= list->size)
+        int popped;
+
+	if (index < 0)
+		index += list->size;
+        if (!list || index < 0 || (unsigned int) index >= list->size)
                 return -1;
 
-        popped= _ll_pop(&list->head, index);
+        popped = _ll_pop(&list->head, index);
         --(list->size);
         return popped;
 }
@@ -214,7 +219,9 @@ ll_node_t *_ll_reverse(ll_node_t **head, ll_node_t *current)
         if (!current)
                 return NULL;
 
-        if (tail = _ll_reverse(head, current->next)) {
+	tail = _ll_reverse(head, current->next);
+
+        if (tail) {
                 current->next = NULL;
                 tail->next = current;
         }

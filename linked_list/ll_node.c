@@ -7,7 +7,8 @@
 ll_node_t *ll_node_new(int data, ll_node_t *next)
 {
         ll_node_t *new_node = NULL;
-        if (new_node = (ll_node_t *) malloc(sizeof(ll_node_t))) {
+	new_node = (ll_node_t *) malloc(sizeof(ll_node_t));
+        if (new_node) {
                 new_node->data = data;
                 new_node->next = next;
         }
@@ -49,7 +50,9 @@ size_t _ll_node_copy_all_to(ll_node_t **dest, ll_node_t *src)
 {
         if (src == NULL)
                 *dest = NULL;
-        else if (*dest = ll_node_new(src->data, NULL))
-                return _ll_node_copy_all_to(&(*dest)->next, src->next) + 1;
+	else
+		*dest = ll_node_new(src->data, NULL);
+	if (*dest)
+		return _ll_node_copy_all_to(&(*dest)->next, src->next) + 1;
         return 0;
 }
