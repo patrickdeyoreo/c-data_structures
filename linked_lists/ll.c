@@ -1,257 +1,280 @@
-// Function definitions for a linked list
+/* Function definitions for a linked list of integers */
 
 #include "ll.h"
+#include <stdio.h>
 
 
-// Create an empty list
-ll_t *ll_new(void)
+/* Create an empty list */
+ll_t ll_new(void)
 {
-        ll_t *new_ll = (ll_t *) malloc(sizeof(ll_t));
-        new_ll->head = NULL;
-        new_ll->size = 0;
-        return new_ll;
+	ll_t new_ll = { NULL, 0 };
+
+	return (new_ll);
 }
 
 
 
-// Create a copy of a list
-ll_t *ll_copy(ll_t *src)
+/* Copy items to a list from another list */
+ll_t *ll_copy(ll_t *dest, ll_t src)
 {
-        ll_t *new_ll = (ll_t *) malloc(sizeof(ll_t));
-        new_ll->head = NULL;
-        new_ll->size = ll_node_copy_all_to(&new_ll->head, src->head);
-        return new_ll;
+	if (dest)
+		dest->size = ll_node_copy_all_to(&dest->head, src.head);
+
+	return (dest);
 }
 
 
 
-// Append an item to a list
+/* Append an item to a list */
 int ll_append(ll_t *list, int to_append)
 {
-        if (!list)
-                return -1;
+	if (!list)
+		return (-1);
 
-        _ll_append(&list->head, to_append);
-        return ++(list->size);
+	_ll_append(&list->head, to_append);
+
+	list->size += 1;
+
+	return (list->size);
 }
 
 void _ll_append(ll_node_t **head, int to_append)
 {
-        if (*head)
-                _ll_append(&(*head)->next, to_append);
-        else
-                *head = ll_node_new(to_append, NULL);
-        return;
+	if (*head)
+		_ll_append(&(*head)->next, to_append);
+	else
+		*head = ll_node_new(to_append, NULL);
 }
 
 
 
-// Append a list to a list
-int ll_extend(ll_t *list, ll_t *to_append)
+/* Append items to a list from another list */
+int ll_extend(ll_t *list, ll_t to_append)
 {
-        if (!list || !to_append || list == to_append)
-                return -1;
+	if (!list || !_ll_extend(&list->head, to_append.head))
+		return (-1);
 
-        _ll_extend(&list->head, to_append->head);
-        return list->size += to_append->size;
+	list->size += to_append.size;
+
+	return (to_append.size);
 }
 
-void _ll_extend(ll_node_t **head, ll_node_t *to_append)
+int _ll_extend(ll_node_t **head, ll_node_t *to_append)
 {
-        if (*head)
-                _ll_extend(&(*head)->next, to_append);
-        else
-                *head = ll_node_copy_all(to_append);
-        return;
+	if (*head)
+	{
+		if (*head == to_append)
+			return (0);
+		return (_ll_extend(&(*head)->next, to_append));
+	}
+
+	*head = ll_node_copy_all(to_append);
+
+	return (1);
 }
 
 
 
-// Insert an item at a given position
+/* Insert an item in a list at the specified index */
 int ll_insert(ll_t *list, int index, int to_insert)
 {
 	if (index < 0)
 		index += list->size + 1;
-        if (!list || index < 0 || (unsigned int) index > list->size)
-                return -1;
+	if (!list || index < 0 || index > list->size)
+		return (-1);
 
-        _ll_insert(&list->head, index, to_insert);
-        return ++(list->size);
+	_ll_insert(&list->head, index, to_insert);
+
+	list->size += 1;
+
+	return (list->size);
 }
 
 void _ll_insert(ll_node_t **head, int index, int to_insert)
 {
-        if (index)
-                _ll_insert(&(*head)->next, --index, to_insert);
-        else
-                *head = ll_node_new(to_insert, *head);
-        return;
+	if (index)
+		_ll_insert(&(*head)->next, --index, to_insert);
+	else
+		*head = ll_node_new(to_insert, *head);
 }
 
 
 
-// Remove the first matching item
+/* Remove the first matching item from a list */
 int ll_remove(ll_t *list, int to_remove)
 {
-        int removed = 0;
+	int removed = 0;
 
-        if (!list)
-                return -1;
+	if (!list)
+		return (-1);
 
-        removed = _ll_remove(&list->head, to_remove);
-        list->size -= removed;
-        return removed;
+	removed = _ll_remove(&list->head, to_remove);
+
+	list->size -= removed;
+
+	return (removed);
 }
 
 int _ll_remove(ll_node_t **head, int to_remove)
 {
-        ll_node_t *match = NULL;
+	ll_node_t *match = NULL;
 
-        if (!*head)
-                return 0;
+	if (!*head)
+		return (0);
 
-        if ((*head)->data == to_remove) {
-                match = *head;
-                *head = (*head)->next;
-                free(match);
-                return 1;
-        }
+	if ((*head)->data == to_remove)
+	{
+		match = *head;
+		*head = (*head)->next;
+		free(match);
+		return (1);
+	}
 
-        return _ll_remove(&(*head)->next, to_remove);
+	return (_ll_remove(&(*head)->next, to_remove));
 }
 
 
 
-// Remove and return the item at a given position
+/* Get and remove an item from a list at the specified index */
 int ll_pop(ll_t *list, int index)
 {
-        int popped;
+	int popped;
 
 	if (index < 0)
 		index += list->size;
-        if (!list || index < 0 || (unsigned int) index >= list->size)
-                return -1;
 
-        popped = _ll_pop(&list->head, index);
-        --(list->size);
-        return popped;
+	if (!list || index < 0 || index >= list->size)
+		return (-1);
+
+	popped = _ll_pop(&list->head, index);
+
+	list->size += 1;
+
+	return (popped);
 }
 
 int _ll_pop(ll_node_t **head, int index)
 {
-        ll_node_t *match = NULL;
-        int popped = 0;
+	int popped = 0;
+	ll_node_t *match = NULL;
 
-        if (!*head)
-                return 0;
-        if (index)
-                return _ll_pop(&(*head)->next, --index);
+	if (!*head)
+		return (0);
+	if (index)
+		return (_ll_pop(&(*head)->next, index - 1));
 
-        popped = (*head)->data;
+	popped = (*head)->data;
 
-        match = *head;
-        *head = (*head)->next;
-        free(match);
+	match = *head;
+	*head = (*head)->next;
+	free(match);
 
-        return popped;
+	return (popped);
 }
 
 
 
-// Remove all items in a list
+/* Remove all items from a list */
 int ll_clear(ll_t *list)
 {
-        size_t removed = 0;
+	int removed = 0;
 
-        if (!list)
-                return -1;
+	if (!list)
+		return (-1);
 
-        removed = _ll_clear(&list->head);
-        return list->size -= removed;
+	removed = _ll_clear(&list->head);
+
+	list->size -= removed;
+
+	return (list->size);
 }
 
-size_t _ll_clear(ll_node_t **head)
+int _ll_clear(ll_node_t **head)
 {
-        size_t removed = 0;
+	int removed = 0;
 
-        if (!*head)
-                return 0;
+	if (!*head)
+		return (0);
 
-        removed = _ll_clear(&(*head)->next);
-        free(*head);
-        *head = NULL;
-        return ++removed;
-}
+	removed = _ll_clear(&(*head)->next);
 
+	free(*head);
+	*head = NULL;
 
-
-// Return the number of times an item appears in a list
-int ll_count(ll_t *list, int to_count)
-{
-        if (!list)
-                return -1;
-
-        return _ll_count(&list->head, to_count);
-}
-
-size_t _ll_count(ll_node_t **head, int to_count)
-{
-        if (!*head)
-                return 0;
-        return _ll_count(&(*head)->next, to_count) +
-                ((*head)->data == to_count);
+	return (removed + 1);
 }
 
 
 
-// Reverse a list in place
-void ll_reverse(ll_t *list)
+/* Count the number of times an item appears in a list */
+int ll_count(ll_t list, int to_count)
 {
-        if (list)
-                _ll_reverse(&list->head, list->head);
-        return;
+	return (_ll_count(&list.head, to_count));
+}
+
+int _ll_count(ll_node_t **head, int to_count)
+{
+	if (!*head)
+		return (0);
+
+	return (_ll_count(&(*head)->next, to_count) +
+			(to_count == (*head)->data));
+}
+
+
+
+/* Reverse the items in a list */
+ll_t * ll_reverse(ll_t *list)
+{
+	if (list)
+		_ll_reverse(&list->head, list->head);
+
+	return (list);
 }
 
 ll_node_t *_ll_reverse(ll_node_t **head, ll_node_t *current)
 {
-        ll_node_t *tail = NULL;
+	ll_node_t *tail = NULL;
 
-        if (!current)
-                return NULL;
+	if (!current)
+		return (NULL);
 
 	tail = _ll_reverse(head, current->next);
 
-        if (tail) {
-                current->next = NULL;
-                tail->next = current;
-        }
-        else {
-                *head = current;
-        }
+	if (tail)
+	{
+		current->next = NULL;
+		tail->next = current;
+	}
+	else
+	{
+		*head = current;
+	}
 
-        return current;
+	return (current);
 }
 
 
 
-// Print all items in a list
-void ll_print(ll_t *list)
+/* Print all items in a list */
+void ll_print(ll_t list)
 {
-        if (list)
-                _ll_print(list->head);
-        return;
+	_ll_print(list.head);
 }
 
 void _ll_print(ll_node_t *head)
 {
-        if (!head)
-                return;
-        if (head->next)
-                printf("%d, ", head->data);
-        else
-                printf("%d\n", head->data);
+	if (head)
+	{
+		printf("%d", head->data);
 
-        _ll_print(head->next);
+		if (head->next)
+			printf(", ");
 
-        return;
+		_ll_print(head->next);
+	}
+	else
+	{
+		putchar('\n');
+	}
 }
