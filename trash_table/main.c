@@ -76,9 +76,8 @@ int main(int argc, char **argv)
 		val = strchr(key, '=');
 		if (val)
 			*val++ = '\0';
-		printf("Adding %s = %s\n", key, val);
+		printf("Adding: %s = %s\n", key, val);
 		trash_table_set(tt, key, val);
-		trash_table_print(tt);
 	}
 	trash_table_print(tt);
 
