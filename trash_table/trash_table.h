@@ -42,6 +42,7 @@ typedef struct trash_table_s
 } trash_table_t;
 
 trash_table_t *trash_table_new(size_t size);
+
 void trash_table_delete(trash_table_t *tt);
 
 int trash_table_set(trash_table_t *tt, const char *key, const char *value);
@@ -51,6 +52,23 @@ char *trash_table_get(const trash_table_t *tt, const char *key);
 
 void trash_table_print(const trash_table_t *tt);
 void trash_tree_print(const trash_node_t *root);
+
+size_t trash_tree_height(const trash_node_t *root);
+size_t trash_tree_leaf_count(const trash_node_t *root);
+size_t trash_tree_node_count(const trash_node_t *root);
+
+size_t trash_tree_black_max(const trash_node_t *root);
+size_t trash_tree_black_min(const trash_node_t *root);
+
+void trash_tree_rotate_left(trash_node_t **root);
+void trash_tree_rotate_left_complex(trash_node_t **root);
+void trash_tree_rotate_right(trash_node_t **root);
+void trash_tree_rotate_right_complex(trash_node_t **root);
+
+void trash_tree_print2D(const trash_node_t *root);
+
+size_t max(size_t a, size_t b);
+size_t min(size_t a, size_t b);
 
 size_t hash_djb2(const unsigned char *str);
 size_t key_index(const unsigned char *key, size_t size);

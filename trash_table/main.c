@@ -2,43 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#define COUNT 10
-
-/**
- * _trash_tree_print2D - print a binary tree in 2D (helper)
- * @root: a pointer to the root of a subtree
- * @space: the amount of whitespace to print siblings
- *
- * Description: This function performs reverse inorder traversal.
- */
-void _trash_tree_print2D(trash_node_t *root, int space)
-{
-	int i = 0;
-
-	if (root)
-	{
-		space += COUNT;
-
-		_trash_tree_print2D(root->right, space);
-
-		putchar('\n');
-		for (i = COUNT; i < space; i++)
-			putchar(' ');
-		printf("(%c)%s\n", root->red ? 'R' : 'B', root->key);
-
-		_trash_tree_print2D(root->left, space);
-	}
-}
-
-/**
- * trash_tree_print2D - print a binary tree in 2D
- * @root: a pointer to the root of a subtree
- */
-void trash_tree_print2D(trash_node_t *root)
-{
-	_trash_tree_print2D(root, 0);
-}
-
 /**
  * main - example usage
  * @argc: the argument count
@@ -79,10 +42,16 @@ int main(int argc, char **argv)
 		printf("Adding: %s = %s\n", key, val);
 		trash_table_set(tt, key, val);
 	}
+
 	trash_table_print(tt);
+	printf("Elements: %lu\n", trash_tree_node_count(tt->root));
+	printf("Height:   %lu\n", trash_tree_height(tt->root));
+	printf("Leaves:   %lu\n", trash_tree_leaf_count(tt->root));
+	printf("Black path (MIN): %lu\n", trash_tree_black_min(tt->root));
+	printf("Black path (MAX): %lu\n", trash_tree_black_max(tt->root));
+	trash_tree_print2D(tt->root);
 
 	puts("Deleting dictionary...");
 	trash_table_delete(tt);
-
 	return (0);
 }
