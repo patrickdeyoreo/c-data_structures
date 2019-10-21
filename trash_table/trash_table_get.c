@@ -29,12 +29,10 @@ char *trash_chain_get(const trash_node_t *head, const char *key)
  */
 char *trash_table_get(const trash_table_t *tt, const char *key)
 {
-	size_t index = 0;
-
 	if (tt && key && *key)
-	{
-		index = key_index((const unsigned char *) key, tt->size);
-		return (trash_chain_get(tt->array[index], key));
-	}
+		return (trash_chain_get(
+			tt->array[hash((const unsigned char *) key, tt->size)],
+			key
+		));
 	return (NULL);
 }

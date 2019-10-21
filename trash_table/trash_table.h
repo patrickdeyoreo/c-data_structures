@@ -47,8 +47,8 @@ int trash_table_set(trash_table_t *tt, const char *key, const char *value);
 char *trash_table_get(const trash_table_t *tt, const char *key);
 void trash_table_print(const trash_table_t *tt);
 
-size_t hash_djb2(const unsigned char *str);
-size_t key_index(const unsigned char *key, size_t size);
+size_t djb2(const unsigned char *str);
+size_t hash(const unsigned char *key, size_t size);
 
 int trash_tree_insert(trash_node_t **root, trash_node_t *node);
 void trash_tree_print(const trash_node_t *root);

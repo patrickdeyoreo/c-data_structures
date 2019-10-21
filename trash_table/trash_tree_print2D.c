@@ -4,7 +4,7 @@
 #define PADDING 8
 
 /**
- *_trash_tree_print2D - print a binary tree in 2D
+ * trash_tree_print2D - print a binary tree in 2D
  * @root: a pointer to the root of a tree
  *
  * Description: This function prints data from the tree pointed to by root

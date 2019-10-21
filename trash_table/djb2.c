@@ -1,12 +1,12 @@
 #include "trash_table.h"
 
 /**
- * hash_djb2 - compute a hash using the djb2 algorithm
+ * djb2 - compute a hash using the djb2 algorithm
  * @str: a string to hash
  *
  * Return: the hash of str
  */
-size_t hash_djb2(const unsigned char *str)
+size_t djb2(const unsigned char *str)
 {
 	size_t hash = 5381;
 	unsigned int c = 0;

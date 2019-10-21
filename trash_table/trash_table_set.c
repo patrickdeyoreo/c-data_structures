@@ -46,7 +46,7 @@ int trash_table_set(trash_table_t *tt, const char *key, const char *value)
 		if (!new_value)
 			return (0);
 	}
-	index = key_index((const unsigned char *) key, tt->size);
+	index = hash((const unsigned char *) key, tt->size);
 	if (trash_node_set(tt->array[index], key, new_value))
 		return (1);
 
