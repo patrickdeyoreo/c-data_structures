@@ -54,11 +54,12 @@ void trash_table_print(const trash_table_t *tt);
 void trash_tree_print(const trash_node_t *root);
 
 size_t trash_tree_height(const trash_node_t *root);
-size_t trash_tree_leaf_count(const trash_node_t *root);
-size_t trash_tree_node_count(const trash_node_t *root);
+size_t trash_tree_leaves(const trash_node_t *root);
+size_t trash_tree_size(const trash_node_t *root);
 
 size_t trash_tree_black_max(const trash_node_t *root);
 size_t trash_tree_black_min(const trash_node_t *root);
+size_t trash_tree_black_balanced(const trash_node_t *root);
 
 void trash_tree_rotate_left(trash_node_t **root);
 void trash_tree_rotate_left_complex(trash_node_t **root);

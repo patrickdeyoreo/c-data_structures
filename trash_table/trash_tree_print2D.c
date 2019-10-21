@@ -1,40 +1,36 @@
 #include "trash_table.h"
 #include <stdio.h>
 
-#define INCREMENT 10
+#define PADDING 8
 
 /**
- * _trash_tree_print2D - print a binary tree in 2D
+ *_trash_tree_print2D - print a binary tree in 2D
  * @root: a pointer to the root of a tree
- * @space: the amount of whitespace to put between siblings
  *
  * Description: This function prints data from the tree pointed to by root
  * using reverse inorder traversal. The result is a representation of the
  * tree the tree that is geometrically accurate and visually meaningful.
  */
-void _trash_tree_print2D(const trash_node_t *root, size_t space)
+void trash_tree_print2D(const trash_node_t *root)
 {
-	size_t i = INCREMENT;
+	static size_t padding;
+	size_t s = PADDING;
 
 	if (root)
 	{
-		space += INCREMENT;
-		_trash_tree_print2D(root->right, space);
+		padding += PADDING;
+		trash_tree_print2D(root->right);
 
 		putchar('\n');
-		while (i++ < space)
+		while (s++ < padding)
 			putchar(' ');
 
-		printf("<%c> %s\n", root->red ? 'R' : 'B', root->key);
-		_trash_tree_print2D(root->left, space);
-	}
-}
+		if (root->red)
+			printf("<R>(%s)\n", root->key);
+		else
+			printf("<B>(%s)\n", root->key);
 
-/**
- * trash_tree_print2D - print a binary tree in 2D (wrapper)
- * @root: a pointer to the root of a tree
- */
-void trash_tree_print2D(const trash_node_t *root)
-{
-	_trash_tree_print2D(root, 0);
+		trash_tree_print2D(root->left);
+		padding -= PADDING;
+	}
 }
