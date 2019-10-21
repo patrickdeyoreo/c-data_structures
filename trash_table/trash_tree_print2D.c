@@ -8,8 +8,8 @@
  * @root: a pointer to the root of a tree
  *
  * Description: This function prints data from the tree pointed to by root
- * using reverse inorder traversal. The result is a representation of the
- * tree the tree that is geometrically accurate and visually meaningful.
+ * to stdout using reverse inorder traversal. The output is a geometrically
+ * accurate representation of the tree.
  */
 void trash_tree_print2D(const trash_node_t *root)
 {
