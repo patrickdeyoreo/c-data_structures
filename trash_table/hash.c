@@ -24,7 +24,7 @@ size_t djb2(const unsigned char *str)
  *
  * Return: the array index mapped to by key
  */
-size_t hash(const unsigned char *key, size_t size)
+size_t hash(const char *key, size_t size)
 {
-	return (djb2(key) % size);
+	return (djb2((const unsigned char *) key) % size);
 }

@@ -31,7 +31,7 @@ char *trash_table_get(const trash_table_t *tt, const char *key)
 {
 	if (tt && key && *key)
 		return (trash_chain_get(
-			tt->array[hash((const unsigned char *) key, tt->size)],
+			tt->array[hash(key, tt->size)],
 			key
 		));
 	return (NULL);

@@ -25,7 +25,7 @@ void trash_tree_print2D(const trash_node_t *root)
 		while (s++ < padding)
 			putchar(' ');
 
-		if (root->red)
+		if (root->color == RED)
 			printf("<R>(%s)\n", root->key);
 		else
 			printf("<B>(%s)\n", root->key);

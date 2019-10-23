@@ -46,16 +46,16 @@ int trash_table_set(trash_table_t *tt, const char *key, const char *value)
 		if (!new_value)
 			return (0);
 	}
-	index = hash((const unsigned char *) key, tt->size);
+	index = hash(key, tt->size);
 	if (trash_node_set(tt->array[index], key, new_value))
 		return (1);
-
 	new_node = malloc(sizeof(*new_node));
 	if (!new_node)
 	{
 		free(new_value);
 		return (0);
 	}
+	new_node->value = new_value;
 	new_node->key = strdup(key);
 	if (!new_node->key)
 	{
@@ -63,13 +63,11 @@ int trash_table_set(trash_table_t *tt, const char *key, const char *value)
 		free(new_node);
 		return (0);
 	}
-	new_node->value = new_value;
-	new_node->next = tt->array[index];
 	new_node->left = NULL;
 	new_node->right = NULL;
-	new_node->red = 1;
+	new_node->next = tt->array[index];
 	tt->array[index] = new_node;
-	trash_tree_insert(&tt->root, new_node);
-	tt->root->red = 0;
+	if (trash_tree_insert(&tt->root, new_node) == BALANCED_ROOT_BLK)
+		tt->root->color = BLK;
 	return (1);
 }

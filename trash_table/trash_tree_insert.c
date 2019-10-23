@@ -15,41 +15,43 @@
  * 2 if subtree is balanced w/ black root
  * 3 if subtree is balanced w/ red root
  */
-int trash_tree_insert(trash_node_t **root, trash_node_t *node)
+trash_tree_state_t trash_tree_insert(trash_node_t **root, trash_node_t *node)
 {
 	int cmp = 0;
 
 	if (*root)
 	{
-		cmp = strcmp(node->key, (*root)->key) < 0;
-
-		switch (cmp ?
+		switch (cmp = strcmp((*root)->key, node->key) > 0 ?
 			trash_tree_insert(&((*root)->left), node) :
 			trash_tree_insert(&((*root)->right), node))
 		{
-		case 0:
+		case ROTATE_R_SUBTREE:
 			if (cmp)
 				trash_tree_rotate_right_complex(root);
 			else
 				trash_tree_rotate_left(root);
-			return (3);
-		case 1:
+			return (BALANCED_ROOT_RED);
+
+		case ROTATE_L_SUBTREE:
 			if (cmp)
 				trash_tree_rotate_right(root);
 			else
 				trash_tree_rotate_left_complex(root);
-			return (3);
-		case 2:
-			if ((*root)->red)
-				return (3);
+			return (BALANCED_ROOT_RED);
+
+		case BALANCED_ROOT_BLK:
+			if ((*root)->color)
+				return (BALANCED_ROOT_RED);
 			break;
-		case 3:
-			if ((*root)->red)
+
+		case BALANCED_ROOT_RED:
+			if ((*root)->color)
 				return (cmp);
 			break;
 		}
-		return (2);
+		return (BALANCED_ROOT_BLK);
 	}
 	*root = node;
-	return (3);
+	node->color = RED;
+	return (BALANCED_ROOT_RED);
 }

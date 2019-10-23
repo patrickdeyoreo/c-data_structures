@@ -71,6 +71,6 @@ int main(int argc, char **argv)
 		puts("Tree is not balanced!");
 	puts(SEPARATOR);
 	puts("Deleting dictionary...");
-	trash_table_del(tt);
+	trash_table_delete(&tt);
 	return (0);
 }

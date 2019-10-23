@@ -11,7 +11,7 @@ void trash_tree_rotate_left(trash_node_t **root)
 	*root = tmp->right;
 	tmp->right = (*root)->left;
 	(*root)->left = tmp;
-	(*root)->right->red = 0;
+	(*root)->right->color = BLK;
 }
 
 /**
@@ -27,7 +27,7 @@ void trash_tree_rotate_left_complex(trash_node_t **root)
 	(*root)->right = tmp->right;
 	tmp->right = (*root)->left;
 	(*root)->left = tmp;
-	(*root)->right->red = 0;
+	(*root)->right->color = BLK;
 }
 
 /**
@@ -42,7 +42,7 @@ void trash_tree_rotate_right(trash_node_t **root)
 	tmp->left = (*root)->right;
 	(*root)->right = tmp;
 
-	(*root)->left->red = 0;
+	(*root)->left->color = BLK;
 }
 
 /**
@@ -59,5 +59,5 @@ void trash_tree_rotate_right_complex(trash_node_t **root)
 	tmp->left = (*root)->right;
 	(*root)->right = tmp;
 
-	(*root)->left->red = 0;
+	(*root)->left->color = BLK;
 }

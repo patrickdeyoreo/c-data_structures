@@ -9,7 +9,7 @@
 size_t trash_tree_black_max(const trash_node_t *root)
 {
 	if (root)
-		return (!root->red + max(
+		return (root->color == BLK + max(
 			trash_tree_black_max(root->left),
 			trash_tree_black_max(root->right)
 		));
@@ -25,7 +25,7 @@ size_t trash_tree_black_max(const trash_node_t *root)
 size_t trash_tree_black_min(const trash_node_t *root)
 {
 	if (root)
-		return (!root->red + min(
+		return (root->color == BLK + min(
 			trash_tree_black_min(root->left),
 			trash_tree_black_min(root->right)
 		));
@@ -42,10 +42,10 @@ size_t trash_tree_black_min(const trash_node_t *root)
  */
 size_t trash_tree_black_balanced(const trash_node_t *root)
 {
-	if (root)
-		return (trash_tree_black_max(root) ==
-			trash_tree_black_min(root) &&
-			trash_tree_black_balanced(root->left) &&
-			trash_tree_black_balanced(root->right));
-	return (1);
+	return (!root || (
+		trash_tree_black_max(root) ==
+		trash_tree_black_min(root) &&
+		trash_tree_black_balanced(root->left) &&
+		trash_tree_black_balanced(root->right)
+	));
 }
