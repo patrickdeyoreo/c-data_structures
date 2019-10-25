@@ -1,5 +1,5 @@
 # C - Data Structures
-### data structures written in C
+## data structures written in C
 
 * **Linked Lists**
   * old linked list code
