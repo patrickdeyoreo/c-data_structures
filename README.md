@@ -1,5 +1,8 @@
-# C Data Structures
-### a collection of data structures written in C
+# C - Data Structures
+## Some data structures written in C
 
-* **linked lists**
-  * a collection of linked lists
+* **Linked Lists**
+  * old linked list code
+
+* **Trash Table**
+  * a sorted hash table
