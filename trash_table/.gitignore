@@ -1,8 +1,7 @@
-# whitelist
-
 *
 !AUTHORS
-!README.md
-!.gitignore
+!LICENSE
+!README.*
 !*.c
 !*.h
+!*.sh
