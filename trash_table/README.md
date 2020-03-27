@@ -23,7 +23,7 @@ Lastly, the BST is implemented as a red-black tree. Ann AVL tree would also be a
 
 To compile the files in this directory using `gcc`, run:
 
-```gcc -Wall -Werror -Wextra -pedantic *.c -o ```_`name-of-executable`_
+`gcc -Wall -Werror -Wextra -pedantic *.c -o `_`name-of-executable`_
 
 ### To-Do
 
