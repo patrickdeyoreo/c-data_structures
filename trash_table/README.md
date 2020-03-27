@@ -16,6 +16,10 @@ using self-balancing BSTs would yield `O(log(k))` retrieval and may therefore be
 factor. The keys are hashed using the `djb2` algorithm, chosen for its simplicity, as this is merely a proof-of-concept.
 Lastly, the BST is implemented as a red-black tree. Ann AVL tree would also be a fine choice.
 
+### Compilation
+To compile the files in this directory using `gcc`, run:
+```gcc -Wall -Werror -Wextra -pedantic *.c -o ```_`name-of-executable`_
+
 ### To-Do
 - Implement removal
 - Implement level-order traversal using a queue
