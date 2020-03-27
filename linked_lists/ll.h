@@ -59,7 +59,7 @@ int _ll_count(ll_node_t **head, int to_count);
 
 /* Reverse the items in a list */
 ll_t *ll_reverse(ll_t *list);
-ll_node_t *_ll_reverse(ll_node_t **head, ll_node_t *current);
+ll_node_t **_ll_reverse(ll_node_t **head, ll_node_t *current);
 
 
 /* Print all items in a list */
