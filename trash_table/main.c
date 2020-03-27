@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	tt = trash_table_new(TABLESIZE);
 	if (!tt)
 	{
-		fprintf(stderr, "Failed to allocate %dB\n", sizeof(*tt->array) * TABLESIZE);
+		fprintf(stderr, "Failed to allocate %zuB\n", sizeof(*tt->array) * TABLESIZE);
 		return (1);
 	}
 	puts("Populating...");
