@@ -17,13 +17,17 @@ the efficiency of insertion achieved by a balanced BST, we get a sorted hash tab
 The hash table included here uses chaining to resolve collisions. The chains themselves are singly-linked lists, however
 using self-balancing BSTs would yield `O(log(k))` retrieval and may therefore be preferrable if space is not a limiting
 factor. The keys are hashed using the `djb2` algorithm, chosen for its simplicity, as this is merely a proof-of-concept.
-Lastly, the BST is implemented as a red-black tree. Ann AVL tree would also be a fine choice.
+Lastly, the BST is implemented as a red-black tree. An AVL tree would be a fine choice as well.
 
 ### Compilation
 
-To compile the files in this directory using `gcc`, run:
+To compile the sample program in this directory using `gcc`, run:
 
 `gcc -Wall -Werror -Wextra -pedantic *.c -o `_`name-of-executable`_
+
+### Testing
+
+Run `test.sh` to compile the sample program and invoke the resulting executable across a range of input. 
 
 ### To-Do
 
