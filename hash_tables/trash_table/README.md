@@ -1,6 +1,6 @@
 # Trash Table
 
-## Binary Search *Tr*ee + H*ash* *Table* = *Trash Table*
+## Binary Search **Tr**ee + H**ash** **Table** = **Trash Table**
 
 ---
 
@@ -16,7 +16,7 @@ By combining the `O(k)` time-complexity of retrieval achieved by a hash table, w
 of insertion achieved by a balanced BST, where `n` is the number of nodes, we get a
 sorted hash table with the following operational time-complexity:
 
-* `O(k)` search & retrieval,
+* `O(k)` search & retrieval
 * `O(log(n))` insertion & removal
 
 ### Implementation
