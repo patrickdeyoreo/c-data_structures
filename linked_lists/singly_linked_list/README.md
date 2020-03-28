@@ -4,8 +4,8 @@
 
 ## Operations
 
-The following operations are defined in in [`ll.c`](ll.c)
-and can be made available by including the [`ll.h`](ll.h) header:
+The following operations are defined in [`ll.c`](ll.c)
+and can be made available by including [`ll.h`](ll.h):
 - `append`
 - `clear`
 - `copy`
