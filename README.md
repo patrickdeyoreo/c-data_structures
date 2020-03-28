@@ -4,11 +4,11 @@
 
 - __[Linked Lists](linked_lists)__
   - _[Sorted](linked_lists/sorted)_
-    ⋅⋅* [singly-linked lists](linked_lists/sorted/singly_linked_lists)
+    * [singly-linked lists](linked_lists/sorted/singly_linked_lists)
 
 - __[Hash Tables](hash_tables)__
   - _[Sorted](hash_tables/sorted)_
-    ⋅⋅* [trash tables](hash_tables/sorted/trash_tables)
+    * [trash tables](hash_tables/sorted/trash_tables)
 
 ### Authors
 
