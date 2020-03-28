@@ -3,7 +3,7 @@
 ####  This is a placeholder for what will one day be a bountiful collection of data structures written in plain C
 
 - __[Linked Lists](linked_lists)__
-  - _[__Sorted__](linked_lists/sorted)_
+  - _[Sorted](linked_lists/sorted)_
     ⋅⋅* [singly-linked lists](linked_lists/sorted/singly_linked_lists)
 
 - __[Hash Tables](hash_tables)__
