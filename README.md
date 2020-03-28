@@ -1,14 +1,16 @@
 # C Data Structures
 
-####  This is a placeholder for what will one day be a bountiful collection of data structures written in plain C
+## This is a placeholder for what will one day be a bountiful collection of data structures written in plain C
 
-- __[Linked Lists](linked_lists)__
-  - _[Sorted](linked_lists/sorted)_
-    * [singly-linked lists](linked_lists/sorted/singly_linked_lists)
+### [Linked Lists](linked_lists)
 
-- __[Hash Tables](hash_tables)__
-  - _[Sorted](hash_tables/sorted)_
-    * [trash tables](hash_tables/sorted/trash_tables)
+- __[Sorted](linked_lists/sorted)__
+  - [singly-linked lists](linked_lists/sorted/singly_linked_lists)
+
+### [Hash Tables](hash_tables)
+
+- __[Sorted](hash_tables/sorted)__
+  - [trash tables](hash_tables/sorted/trash_tables)
 
 ### Authors
 
