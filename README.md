@@ -4,15 +4,13 @@
 
 ### [Linked Lists](linked_lists)
 
-- __[Sorted](linked_lists/sorted)__
-  - [singly-linked lists](linked_lists/sorted/singly_linked_lists)
+- __[singly-linked list](linked_lists/singly_linked_list)__
 
 ### [Hash Tables](hash_tables)
 
-- __[Sorted](hash_tables/sorted)__
-  - [trash tables](hash_tables/sorted/trash_tables)
+- __[trash table](hash_tables/trash_table)__
 
-### Authors
+### [Authors](AUTHORS)
 
 - __[Patrick DeYoreo](https://github.com/patrickdeyoreo/)__ <pdeyoreo@gmail.com>
 
