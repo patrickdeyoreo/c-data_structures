@@ -2,8 +2,6 @@
 
 ## Data Structures Written in C
 
----
-
 ### [**Linked Lists**](linked_lists)
 
 - [singly-linked list](linked_lists/singly_linked_list)
