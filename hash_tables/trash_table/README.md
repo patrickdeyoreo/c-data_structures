@@ -1,6 +1,6 @@
 # Trash Table
 
-## Binary Search **Tr**_ee_ _+_ _H_**ash** **Table** = **Trash Table**
+## Binary Search *Tr*ee + H*ash* *Table* = *Trash Table*
 
 ---
 
