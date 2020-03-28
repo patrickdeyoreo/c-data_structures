@@ -10,7 +10,7 @@
 
 - __[trash table](hash_tables/trash_table)__
 
-### [Authors](AUTHORS)
+### Authors
 
 - __[Patrick DeYoreo](https://github.com/patrickdeyoreo/)__ <pdeyoreo@gmail.com>
 

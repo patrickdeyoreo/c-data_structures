@@ -37,7 +37,7 @@ Run `test.sh` to compile the sample program and invoke the resulting executable 
 
 ### Authors
 
-- __[Patrick DeYoreo](https://github.com/patrickdeyoreo/)__ <pdeyoreo@gmail.com>
+- [Patrick DeYoreo](https://github.com/patrickdeyoreo/) <pdeyoreo@gmail.com>
 
 ### Related Projects
 
