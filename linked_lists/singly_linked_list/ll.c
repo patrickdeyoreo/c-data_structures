@@ -224,7 +224,7 @@ int _ll_count(ll_node_t **head, int to_count)
 
 
 /* Reverse the items in a list */
-ll_t * ll_reverse(ll_t *list)
+ll_t *ll_reverse(ll_t *list)
 {
 	if (list && list->head)
 		_ll_reverse(&list->head, list->head);
