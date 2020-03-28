@@ -1,6 +1,6 @@
 # Trash Table
 
-## _Binary Search **Tr**_ee_ _+_ _H_**ash** **Table**_ = _**Trash Table**_
+## Binary Search **Tr**_ee_ _+_ _H_**ash** **Table** = **Trash Table**
 
 ---
 
