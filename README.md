@@ -7,7 +7,7 @@
     ⋅⋅* [singly-linked lists](linked_lists/sorted/singly_linked_lists)
 
 - __[Hash Tables](hash_tables)__
-  - __[Sorted](hash_tables/sorted)
+  - __[Sorted](hash_tables/sorted)__
     ⋅⋅* [trash tables](hash_tables/sorted/trash_tables)
 
 ### Authors
