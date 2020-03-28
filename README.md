@@ -3,11 +3,11 @@
 ####  This is a placeholder for what will one day be a bountiful collection of data structures written in plain C
 
 - __[Linked Lists](linked_lists)__
-  - [__Sorted__](linked_lists/sorted)__:
+  - _[__Sorted__](linked_lists/sorted)_
     ⋅⋅* [singly-linked lists](linked_lists/sorted/singly_linked_lists)
 
 - __[Hash Tables](hash_tables)__
-  - __[Sorted](hash_tables/sorted)__
+  - _[Sorted](hash_tables/sorted)_
     ⋅⋅* [trash tables](hash_tables/sorted/trash_tables)
 
 ### Authors
