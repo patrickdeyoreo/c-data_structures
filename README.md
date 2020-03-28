@@ -1,6 +1,6 @@
 # C Data Structures
 
-## Data Structures Written in Plain C
+## Data Structures Written in C
 
 ---
 
