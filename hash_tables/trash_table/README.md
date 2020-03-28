@@ -6,13 +6,15 @@
 
 ### Concept
 
-The motivation for this data structure was derived from the sorted dictionary used
-by the language `PHP`, which simultaneously stores values in a hash table and a doubly linked list. The idea is that by connecting the items in a hash table such that they form a binary search tree, we can reap benefits of both structures.
+The motivation for this data structure was derived from the sorted dictionary implementation used
+by PHP, which simultaneously stores values in a hash table and a doubly linked list. The idea is that
+by connecting the items in a hash table such that they form a binary search tree, we can reap benefits
+of both structures.
 
 ### Benefits
 
 By combining the `O(k)` time-complexity of retrieval achieved by a hash table, where
-`k` represents the cost of resolving a collision, with the `O(log(n))` time-complexity
+`k` represents the cost of resolving a collision, with the `O(log(n))` complexity
 of insertion achieved by a balanced BST, where `n` is the number of nodes, we get a
 sorted hash table with the following operational time-complexity:
 
