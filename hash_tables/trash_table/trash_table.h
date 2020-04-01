@@ -67,6 +67,20 @@ typedef struct trash_table_s
 	size_t size;
 } trash_table_t;
 
+/**
+ * struct trash_queue_s - a node for a queue of pointers to tree nodes
+ * @item: a pointer to a tree node
+ * @next: a pointer to the next node in the queue
+ *
+ * Description: This queue, implemented as a circular-linked, is used for
+ * level-order traversal of a binary tree.
+ */
+typedef struct trash_queue_s
+{
+	const trash_node_t *item;
+	struct trash_queue_s *next;
+} trash_queue_t;
+
 trash_table_t *trash_table_new(size_t size);
 void trash_table_delete(trash_table_t **tt);
 int trash_table_set(trash_table_t *tt, const char *key, const char *value);
@@ -78,10 +92,12 @@ void trash_table_clear(trash_table_t *tt);
 size_t djb2(const unsigned char *str);
 size_t hash(const char *key, size_t size);
 
-void trash_tree_delete(trash_node_t **tt);
 trash_tree_state_t trash_tree_insert(trash_node_t **root, trash_node_t *node);
 int trash_list_contains(const trash_node_t *ls, const char *key);
+void trash_tree_delete(trash_node_t **tt);
 void trash_tree_print(const trash_node_t *root);
+void trash_tree_level_order(
+	const trash_node_t *root, void (*func)(const trash_node_t *));
 
 size_t trash_tree_height(const trash_node_t *root);
 size_t trash_tree_leaves(const trash_node_t *root);

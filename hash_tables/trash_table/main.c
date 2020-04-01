@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define TABLESIZE 1123
-#define SEPARATOR "---"
+#define SEPARATOR "----------------"
 
 /**
  * main - example usage
@@ -39,9 +39,8 @@ int main(int argc, char **argv)
 			*value++ = '\0';
 		trash_table_set(tt, key, value);
 	}
-	puts(SEPARATOR);
-	trash_table_print(tt);
-	puts(SEPARATOR);
+	puts("Printing tree...");
+	trash_tree_print(tt->root);
 	puts("Evaluating tree...");
 	printf("Size  : %lu\n", trash_tree_size(tt->root));
 	printf("Height: %lu\n", trash_tree_height(tt->root));
@@ -50,7 +49,6 @@ int main(int argc, char **argv)
 		puts("Balanced: Yes");
 	else
 		puts("Balanced: No");
-	puts(SEPARATOR);
 	puts("Deleting table...");
 	trash_table_delete(&tt);
 	return (0);

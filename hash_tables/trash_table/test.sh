@@ -87,4 +87,8 @@ do
   set -o verbose
   "${tmpdir}/test" "${items[@]}"
   set +o verbose
+  if (( ord != end ))
+  then
+    echo '****************'
+  fi
 done
