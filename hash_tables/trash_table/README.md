@@ -43,8 +43,9 @@ Run `test.sh` to compile the sample program and execute it with a variety of inp
 ### Things To Do
 
 * Implement removal
-* Implement level-order traversal using a queue
-* Re-write chaining with BSTs instead of linked lists
+* ~~Implement level-order traversal using a queue~~
+* Re-write chaining using BSTs
+* Visualize the binary-tree structure
 
 ---
 
