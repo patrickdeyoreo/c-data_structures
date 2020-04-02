@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 			*argv);
 		return (2);
 	}
-	puts("Creating table...");
+	puts("Allocating...");
 	tt = trash_table_new(TABLESIZE);
 	if (!tt)
 	{
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 			sizeof(*tt->array) * TABLESIZE);
 		return (1);
 	}
-	puts("Populating table...");
+	puts("Populating...");
 	while ((key = *(++argv)))
 	{
 		value = strchr(key, '=');
@@ -39,17 +39,19 @@ int main(int argc, char **argv)
 			*value++ = '\0';
 		trash_table_set(tt, key, value);
 	}
-	puts("Printing tree...");
-	trash_tree_print(tt->root);
-	puts("Evaluating tree...");
-	printf("Size  : %lu\n", trash_tree_size(tt->root));
-	printf("Height: %lu\n", trash_tree_height(tt->root));
-	printf("Leaves: %lu\n", trash_tree_leaves(tt->root));
+	puts("Printing...");
+	trash_tree_print_sorted(tt->root);
+	puts("Evaluating...");
+	puts(SEPARATOR);
+	printf("%-8s: %lu\n", "Size", trash_tree_size(tt->root));
+	printf("%-8s: %lu\n", "Height", trash_tree_height(tt->root));
+	printf("%-8s: %lu\n", "Leaves", trash_tree_leaves(tt->root));
 	if (trash_tree_black_balanced(tt->root))
-		puts("Balanced: Yes");
+		printf("%-8s: Yes\n", "Balanced");
 	else
-		puts("Balanced: No");
-	puts("Deleting table...");
+		printf("%-8s: No\n", "Balanced");
+	puts(SEPARATOR);
+	puts("Deleting...");
 	trash_table_delete(&tt);
 	return (0);
 }

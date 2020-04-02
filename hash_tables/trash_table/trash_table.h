@@ -93,11 +93,17 @@ size_t djb2(const unsigned char *str);
 size_t hash(const char *key, size_t size);
 
 trash_tree_state_t trash_tree_insert(trash_node_t **root, trash_node_t *node);
-int trash_list_contains(const trash_node_t *ls, const char *key);
 void trash_tree_delete(trash_node_t **tt);
-void trash_tree_print(const trash_node_t *root);
+
+int trash_list_contains(const trash_node_t *ls, const char *key);
+
 void trash_tree_level_order(
 	const trash_node_t *root, void (*func)(const trash_node_t *));
+void trash_tree_in_order(
+	const trash_node_t *root, void (*func)(const trash_node_t *));
+
+void trash_tree_print(const trash_node_t *root);
+void trash_tree_print_sorted(const trash_node_t *root);
 
 size_t trash_tree_height(const trash_node_t *root);
 size_t trash_tree_leaves(const trash_node_t *root);

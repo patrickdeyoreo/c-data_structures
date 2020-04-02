@@ -59,9 +59,9 @@ const trash_node_t *dequeue(trash_queue_t **rear)
 
 
 /**
- * trash_tree_levelorder - apply a function to a binary tree in level-order
+ * trash_tree_level_order - apply a function to a binary tree in level-order
  * @root: a pointer to the root node
- * @func: a function that takes a va_list and returns nothing
+ * @func: a function that takes a tree node pointer and returns nothing
  */
 void trash_tree_level_order(
 	const trash_node_t *root, void (*func)(const trash_node_t *))

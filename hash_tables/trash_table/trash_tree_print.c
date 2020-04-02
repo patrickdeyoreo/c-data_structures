@@ -28,3 +28,19 @@ void trash_tree_print(const trash_node_t *root)
 	}
 }
 
+
+/**
+ * trash_tree_print_sorted - apply a function to a binary tree in level-order
+ * @root: a pointer to the root node
+ */
+void trash_tree_print_sorted(const trash_node_t *root)
+{
+	if (root)
+	{
+		putchar('{');
+		putchar('\n');
+		trash_tree_in_order(root, trash_node_print);
+		putchar('}');
+		putchar('\n');
+	}
+}

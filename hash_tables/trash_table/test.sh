@@ -7,7 +7,8 @@
 # all source files found in the directory heierarchy rooted at the location
 # of this script will be passed to gcc for compilation. If any non-option
 # arguments are supplied, they and they alone will be passed to gcc.
-# usage: test.sh [-v] [-t TEMPLATE] [--] [SOURCE] ...
+# usage: test.sh [SOURCE] ...
+
 
 # Requests a response from the user regarding a "yes-or-no" question
 # Usage: confirm [PROMPT]
@@ -29,15 +30,16 @@ confirm_exit()
   done
 }
 
+
+# Configure the environment and compile the executable. If this fails, exit.
+set -o errexit
+
 # If the shell is interactive, request confirmation before exiting upon
 # receiveing Ctrl-C (SIGINT). Otherwise exit quieltly with the proper status.
 trap 'echo
 [[ -t 0 ]] && confirm_exit || {
   trap INT && kill -s INT "$$" || exit 130
 }' INT
-
-# Configure the environment and compile executable. Exit if this fails.
-set -o errexit
 
 # Initialize loop variables.
 chars=( )
@@ -49,12 +51,9 @@ printf -v end '%d' "'z"
 CDPATH='' cd -- "${BASH_SOURCE[0]%/*}"
 
 # Make a directory for temporary files and set a trap to remove it upon exit.
+unset tmpdir
+trap 'rm -fr -- "${tmpdir}" 2> /dev/null' EXIT
 tmpdir="$(mktemp -d --tmpdir)"
-if ! trap 'rm -fr -- "${tmpdir}" 2> /dev/null' EXIT
-then
-  rm -fr "${tmpdir}"
-  exit 1
-fi
 
 # Try to compile all non-hidden .c files from all non-hidden directories at
 # or below the location of this script. Provide file or directory names as
@@ -65,10 +64,11 @@ then
   set -- ./**/*.c
   shopt -u globstar nullglob
 fi
-gcc -g -Wall -Werror -Wextra -pedantic -o "${tmpdir}/test" "$@"
+gcc -g -Wall -Werror -Wextra -pedantic -o "${tmpdir}/exe" "$@"
 
 # Environment configured. Compilation successful.
 set +o errexit
+
 
 # Execute program with randomly generated arguments.
 # shellcheck disable=SC2059
@@ -82,13 +82,17 @@ do
   do
     items+=("${chars[-1]}${char}=${RANDOM}")
   done
-  readarray -t items < <(shuf --echo -- "${items[@]}")
 
-  set -o verbose
-  "${tmpdir}/test" "${items[@]}"
-  set +o verbose
+  if IFS=$'\n' read -a items -d '' -r
+  then
+    "${tmpdir}/exe" "${items[@]}"
+  fi < <(shuf -e -- "${items[@]}" && printf '\0')
+
   if (( ord != end ))
   then
+    read -r -t 0.8
+    echo
     echo '****************'
-  fi
+    echo
+  fi <> <(:)
 done
