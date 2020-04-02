@@ -8,7 +8,7 @@
 
 ### [**Hash Tables**](hash_tables)
 
-- _[trash table](hash_tables/trash_table)_
+- [trash table](hash_tables/trash_table)
 
 
 ---
