@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 #
-# Attempt to compile sources into an executable and invoke it across a range
-# of arguments. If a template is specified, it will be used to generate the
-# arguments supplied to the program. Otherwise, test arguments will consist
-# simply of randomly-generated values. If called with no non-option arguments
-# all source files found in the directory heierarchy rooted at the location
-# of this script will be passed to gcc for compilation. If any non-option
-# arguments are supplied, they and they alone will be passed to gcc.
+# Attempt to compile sources into an executable and invoke it across
+# a variety of arguments. If this script is called without arguments,
+# all source files in the directory heierarchy rooted at the location
+# of this file will be passed to gcc for compilation. If called with
+# arguments, they and they alone will be passed to gcc.
 # usage: test.sh [SOURCE] ...
 
 
