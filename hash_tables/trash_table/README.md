@@ -45,7 +45,7 @@ Run `test.sh` to compile the sample program and execute it with a variety of inp
 * Implement removal
 * ~~Implement level-order traversal using a queue~~
 * Re-write chaining using BSTs
-* Visualize the binary-tree structure
+* Visualize binary-tree structure
 
 ---
 
